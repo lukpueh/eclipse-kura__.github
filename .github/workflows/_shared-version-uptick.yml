@@ -65,3 +65,4 @@ jobs:
           - Automated uptick to ${{ steps.get-version.outputs.resolved-version }} version.
           - Automation ran using `${{ inputs.uptick_config }}` configuration.
         branch-suffix: timestamp
+        token: ${{ secrets.BOT_GITHUB_TOKEN }}
