@@ -1,6 +1,10 @@
 name: "Backport (shared)"
 
-on: workflow_call
+on:
+  workflow_call:
+    secrets:
+        personal_access_token:
+          required: true
 
 jobs:
   backport:
@@ -20,5 +24,5 @@ jobs:
     steps:
       - uses: tibdex/backport@9565281eda0731b1d20c4025c43339fb0a23812e # v2.0.4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.personal_access_token }}
           title_template: "<%= title %> [backport <%= base %>]"

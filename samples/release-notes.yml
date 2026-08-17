@@ -13,3 +13,5 @@ jobs:
     uses: eclipse-kura/.github/.github/workflows/_shared-release-notes.yml@main
     with:
       starting_commit: ${{ inputs.starting_commit }}
+    secrets:
+      personal_access_token: ${{ secrets.BOT_GITHUB_TOKEN }}

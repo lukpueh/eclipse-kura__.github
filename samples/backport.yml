@@ -8,3 +8,5 @@ on:
 jobs:
   call-workflow-in-public-repo:
     uses: eclipse-kura/.github/.github/workflows/_shared-backport.yml@main
+    secrets:
+      personal_access_token: ${{ secrets.BOT_GITHUB_TOKEN }}

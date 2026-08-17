@@ -18,3 +18,5 @@ jobs:
     uses: eclipse-kura/.github/.github/workflows/_shared-version-uptick.yml@main
     with:
       uptick_config: ${{ inputs.uptick_config }}
+    secrets:
+      personal_access_token: ${{ secrets.BOT_GITHUB_TOKEN }}

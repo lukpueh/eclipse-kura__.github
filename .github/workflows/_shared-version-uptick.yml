@@ -6,6 +6,9 @@ on:
         uptick_config:
           type: string
           required: true
+    secrets:
+        personal_access_token:
+          required: true
 
 jobs:
   uptick:
@@ -65,3 +68,4 @@ jobs:
           - Automated uptick to ${{ steps.get-version.outputs.resolved-version }} version.
           - Automation ran using `${{ inputs.uptick_config }}` configuration.
         branch-suffix: timestamp
+        token: ${{ secrets.personal_access_token }}
