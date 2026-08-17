@@ -23,10 +23,14 @@ Eclipse Kura™ runs on an edge gateway, which can be anything from a small SBC(
 - [kura-command](https://github.com/eclipse-kura/kura-command): Eclipse Kura™ Command addon
 - [kura-deployment](https://github.com/eclipse-kura/kura-deployment): Eclipse Kura™ Deployment addon
 - [kura-gpio](https://github.com/eclipse-kura/kura-gpio): Eclipse Kura™ GPIO handling addon
+- [kura-log-filesystem](https://github.com/eclipse-kura/kura-log-filesystem): Eclipse Kura™ Filesystem log addon
 - [kura-management-ui](https://github.com/eclipse-kura/kura-management-ui): Eclipse Kura™ Web UI addon
 - [kura-metapackage](https://github.com/eclipse-kura/kura-metapackage): Eclipse Kura™ Metapackage
+- [kura-modbus](https://github.com/eclipse-kura/kura-modbus): Eclipse Kura™ Modbus addon
 - [kura-networking](https://github.com/eclipse-kura/kura-networking): Eclipse Kura™ Networking addon
+- [kura-opcua](https://github.com/eclipse-kura/kura-opcua): Eclipse Kura™ OPC UA addon
 - [kura-position](https://github.com/eclipse-kura/kura-position): Eclipse Kura™ Position addon
+- [kura-s7](https://github.com/eclipse-kura/kura-s7): Eclipse Kura™ S7 addon
 - [kura-triton](https://github.com/eclipse-kura/kura-triton): Eclipse Kura™ for Nvidia Triton™ addon
 - [kura-wires](https://github.com/eclipse-kura/kura-wires): Eclipse Kura™ Wires and Assets addon
 
