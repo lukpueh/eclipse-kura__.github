@@ -9,6 +9,9 @@ on:
         # Kept so existing callers keep validating; drop once they stop passing it.
         required: true
         type: string
+  # STAGING: the shared workflow is workflow_call only; allow direct dispatch
+  # so it can be exercised without a caller repository.
+  workflow_dispatch:
 
 env:
   JAVA_VERSION: '21' # java version used by the product
@@ -23,7 +26,7 @@ env:
 jobs:
   generate-sbom:
     name: Generate SBOM
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
@@ -107,3 +110,4 @@ jobs:
           sbom-file: "./target/bom.json"
           product-name: ${{ steps.info.outputs.project_name }}
           product-version: ${{ steps.info.outputs.project_version }}
+          staging: true
