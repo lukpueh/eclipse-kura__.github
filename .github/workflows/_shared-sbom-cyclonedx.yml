@@ -2,10 +2,6 @@ name: "Kura SBOM scan via cyclonedx (shared)"
 
 on:
   workflow_call:
-    inputs:
-      dependency-track-id:
-        required: true
-        type: string
 
 env:
   JAVA_VERSION: '21' # java version used by the product
@@ -21,9 +17,9 @@ jobs:
   generate-sbom:
     name: Generate SBOM
     runs-on: ubuntu-22.04
-    outputs:
-      project-name: ${{ steps.info.outputs.project_name }}
-      project-version: ${{ steps.info.outputs.project_version }}
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Set checkout ref
         id: set-checkout-ref
@@ -99,17 +95,8 @@ jobs:
             -Dcyclonedx.skipNotDeployed=false
 
       - name: Upload sbom
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: eclipse-csi/workflows/upload-sbom@d83da6f2897e985d9d2b9541174c7ee5ee6d88ad # main
         with:
-          name: "${{ steps.info.outputs.project_name }}-sbom"
-          path: "./target/bom.json"
-
-  store-sbom-data:
-    needs: ['generate-sbom']
-    uses: eclipse-csi/workflows/.github/workflows/store-sbom-data.yml@88508d92f2638d942a88744431f017225ed8c14c # main@08/04/2026
-    with:
-      projectName: ${{ needs.generate-sbom.outputs.project-name }}
-      projectVersion: ${{ needs.generate-sbom.outputs.project-version }}
-      bomArtifact: "${{ needs.generate-sbom.outputs.project-name }}-sbom"
-      bomFilename: 'bom.json'
-      parentProject: ${{ inputs.dependency-track-id }}
+          sbom-file: "./target/bom.json"
+          product-name: ${{ steps.info.outputs.project_name }}
+          product-version: ${{ steps.info.outputs.project_version }}
